@@ -3,14 +3,31 @@
 def xor(s1,s2):
     return ''.join(chr(ord(a) ^ ord(b)) for a,b in zip(s1,s2))
 
-# Method 2 - use for loop
+# Method 2 - longer, but better to understand what's going on
 
 def xor_2(s1,s2):
 
     output = ""
 
+    # loop through every character in the strings
     for i in range(len(s1)):
-        output += chr(ord(s1[i]) ^ ord(s2[i]))
+
+        # get current character
+        current_char_s1 = s1[i]
+        current_char_s2 = s2[i]
+
+        # convert them into their ASCII values
+        ascii_s1 = ord(current_char_s1)
+        ascii_s2 = ord(current_char_s2)
+
+        # apply XOR gate
+        xor = ascii_s1 ^ ascii_s2
+
+        # convert new ASCII value to a character
+        character = chr(xor)
+
+        # add that character to the output
+        output += character
     
     return output
 
